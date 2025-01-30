@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -16,6 +17,13 @@ app.get("/", (req, res) => {
 });
 
 const pool = require("./config/db");
+
+
+//routes
+
+app.use("/api/users", userRoutes);
+
+
 
 app.get("/test-db", async (req, res) => {
   try {
